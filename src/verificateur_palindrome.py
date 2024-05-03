@@ -2,17 +2,21 @@ import os
 
 
 class VérificateurPalindrome:
-    BIEN_DIT = "Bien dit !"
     BONJOUR = "Bonjour"
     AU_REVOIR = "Au revoir"
 
-    @classmethod
-    def vérifier(cls, chaîne):
+    def __init__(self, langue):
+        self.__langue = langue
+        pass
+
+    def vérifier(self, chaîne):
         miroir = chaîne[::-1]
         est_palindrome = miroir == chaîne
 
-        retour = chaîne + os.linesep + cls.BIEN_DIT \
+        félicitations = self.__langue.féliciter()
+
+        retour = chaîne + os.linesep + félicitations \
             if est_palindrome \
             else miroir
 
-        return cls.BONJOUR + os.linesep + retour + os.linesep + cls.AU_REVOIR
+        return self.BONJOUR + os.linesep + retour + os.linesep + self.AU_REVOIR

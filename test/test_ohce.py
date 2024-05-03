@@ -3,6 +3,9 @@ import random
 import string
 import unittest
 
+from langue_anglaise import LangueAnglaise
+from langue_francaise import LangueFrançaise
+from utilities.verificateur_palindrome_builder import VérificateurPalindromeBuilder
 from verificateur_palindrome import VérificateurPalindrome
 
 
@@ -21,8 +24,10 @@ class PalindromeTest(unittest.TestCase):
         # ETANT DONNE un non-palindrome
         for chaîne in cas:
             with self.subTest(chaîne):
+                vérificateur = VérificateurPalindromeBuilder.par_defaut()
+
                 # QUAND on vérifie si c'est un palindrome
-                résultat = VérificateurPalindrome.vérifier(chaîne)
+                résultat = vérificateur.vérifier(chaîne)
 
                 # ALORS la chaîne est renvoyée en miroir
                 attendu = chaîne[::-1]
@@ -32,11 +37,30 @@ class PalindromeTest(unittest.TestCase):
         # ETANT DONNE un palindrome
         palindrome = self.PALINDROME_REPRESENTATIF
 
+        # ET que l'utilisateur parle français
+        langue = LangueFrançaise()
+        vérificateur = VérificateurPalindrome(langue)
+
         # QUAND on vérifie si c'est un palindrome
-        résultat = VérificateurPalindrome.vérifier(palindrome)
+        résultat = vérificateur.vérifier(palindrome)
 
         # ALORS la chaîne est renvoyée suivie de "Bien dit !"
-        attendu = palindrome + os.linesep + VérificateurPalindrome.BIEN_DIT
+        attendu = palindrome + os.linesep + LangueFrançaise.BIEN_DIT
+        self.assertIn(attendu, résultat)
+
+    def test_well_said(self):
+        # ETANT DONNE un palindrome
+        palindrome = self.PALINDROME_REPRESENTATIF
+
+        # ET que l'utilisateur parle anglais
+        langue = LangueAnglaise()
+        vérificateur = VérificateurPalindrome(langue)
+
+        # QUAND on vérifie si c'est un palindrome
+        résultat = vérificateur.vérifier(palindrome)
+
+        # ALORS la chaîne est renvoyée suivie de "Well said !"
+        attendu = palindrome + os.linesep + LangueAnglaise.WELL_SAID
         self.assertIn(attendu, résultat)
 
     def test_au_revoir(self):
@@ -46,7 +70,8 @@ class PalindromeTest(unittest.TestCase):
         for chaîne in cas:
             with self.subTest(chaîne):
                 # QUAND on vérifie si c'est un palindrome
-                résultat = VérificateurPalindrome.vérifier(chaîne)
+                vérificateur = VérificateurPalindromeBuilder.par_defaut()
+                résultat = vérificateur.vérifier(chaîne)
 
                 # ALORS la chaîne contient "Au revoir" sur la dernière ligne
                 lignes = résultat.split(os.linesep)
@@ -60,7 +85,8 @@ class PalindromeTest(unittest.TestCase):
         for chaîne in cas:
             with self.subTest(chaîne):
                 # QUAND on vérifie si c'est un palindrome
-                résultat = VérificateurPalindrome.vérifier(chaîne)
+                vérificateur = VérificateurPalindromeBuilder.par_defaut()
+                résultat = vérificateur.vérifier(chaîne)
 
                 # ALORS la chaîne renvoyée est précédée de "Bonjour"
                 lignes = résultat.split(os.linesep)
