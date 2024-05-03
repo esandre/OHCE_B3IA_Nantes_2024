@@ -12,8 +12,11 @@ class PalindromeTest(unittest.TestCase):
         letters = string.ascii_lowercase
         return ''.join(random.choice(letters) for i in range(length))
 
+    PALINDROME_REPRESENTATIF = "radar"
+    NON_PALINDROME_REPRESENTATIF = "epsi"
+
     def test_miroir(self):
-        cas = ["epsi", "test", "substance", self.randomword(10), self.randomword(100)]
+        cas = [self.NON_PALINDROME_REPRESENTATIF, "test", "substance", self.randomword(10), self.randomword(100)]
 
         # ETANT DONNE un non-palindrome
         for chaîne in cas:
@@ -27,7 +30,7 @@ class PalindromeTest(unittest.TestCase):
 
     def test_bien_dit(self):
         # ETANT DONNE un palindrome
-        palindrome = "radar"
+        palindrome = self.PALINDROME_REPRESENTATIF
 
         # QUAND on vérifie si c'est un palindrome
         résultat = VérificateurPalindrome.vérifier(palindrome)
@@ -37,52 +40,32 @@ class PalindromeTest(unittest.TestCase):
         self.assertIn(attendu, résultat)
 
     def test_au_revoir(self):
-        # ETANT DONNE un palindrome
-        palindrome = "radar"
+        # ETANT DONNE une chaîne
+        cas = [self.PALINDROME_REPRESENTATIF, self.NON_PALINDROME_REPRESENTATIF]
 
-        # QUAND on vérifie si c'est un palindrome
-        résultat = VérificateurPalindrome.vérifier(palindrome)
+        for chaîne in cas:
+            with self.subTest(chaîne):
+                # QUAND on vérifie si c'est un palindrome
+                résultat = VérificateurPalindrome.vérifier(chaîne)
 
-        # ALORS la chaîne contient "Au revoir" sur la dernière ligne
-        lignes = résultat.split(os.linesep)
-        attendu = VérificateurPalindrome.AU_REVOIR
-        self.assertEqual(attendu, lignes[-1])
-
-    def test_au_revoir_2(self):
-        # ETANT DONNE un non-palindrome
-        non_palindrome = "test"
-
-        # QUAND on vérifie si c'est un palindrome
-        résultat = VérificateurPalindrome.vérifier(non_palindrome)
-
-        # ALORS la chaîne contient "Au revoir" sur la dernière ligne
-        lignes = résultat.split(os.linesep)
-        attendu = VérificateurPalindrome.AU_REVOIR
-        self.assertEqual(attendu, lignes[-1])
+                # ALORS la chaîne contient "Au revoir" sur la dernière ligne
+                lignes = résultat.split(os.linesep)
+                attendu = VérificateurPalindrome.AU_REVOIR
+                self.assertEqual(attendu, lignes[-1])
 
     def test_bonjour(self):
         # ETANT DONNE une chaîne
-        chaîne = "test"
+        cas = [self.PALINDROME_REPRESENTATIF, self.NON_PALINDROME_REPRESENTATIF]
 
-        # QUAND on vérifie si c'est un palindrome
-        résultat = VérificateurPalindrome.vérifier(chaîne)
+        for chaîne in cas:
+            with self.subTest(chaîne):
+                # QUAND on vérifie si c'est un palindrome
+                résultat = VérificateurPalindrome.vérifier(chaîne)
 
-        # ALORS la chaîne renvoyée est précédée de "Bonjour"
-        lignes = résultat.split(os.linesep)
-        attendu = VérificateurPalindrome.BONJOUR
-        self.assertEqual(attendu, lignes[0])
-
-    def test_bonjour_2(self):
-        # ETANT DONNE un palindrome
-        palindrome = "kayak"
-
-        # QUAND on vérifie si c'est un palindrome
-        résultat = VérificateurPalindrome.vérifier(palindrome)
-
-        # ALORS la chaîne renvoyée est précédée de "Bonjour"
-        lignes = résultat.split(os.linesep)
-        attendu = VérificateurPalindrome.BONJOUR
-        self.assertEqual(attendu, lignes[0])
+                # ALORS la chaîne renvoyée est précédée de "Bonjour"
+                lignes = résultat.split(os.linesep)
+                attendu = VérificateurPalindrome.BONJOUR
+                self.assertEqual(attendu, lignes[0])
 
 
 if __name__ == '__main__':
