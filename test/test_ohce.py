@@ -33,35 +33,29 @@ class PalindromeTest(unittest.TestCase):
                 attendu = chaîne[::-1]
                 self.assertIn(attendu, résultat)
 
-    def test_bien_dit(self):
-        # ETANT DONNE un palindrome
-        palindrome = self.PALINDROME_REPRESENTATIF
+    def test_féliciter(self):
+        cas = [
+            [LangueAnglaise(), LangueAnglaise.WELL_SAID],
+            [LangueFrançaise(), LangueFrançaise.BIEN_DIT]
+        ]
 
-        # ET que l'utilisateur parle français
-        langue = LangueFrançaise()
-        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
+        for test in cas:
+            langue = test[0]
+            félicitations = test[1]
 
-        # QUAND on vérifie si c'est un palindrome
-        résultat = vérificateur.vérifier(palindrome)
+            with self.subTest(langue):
+                # ETANT DONNE un palindrome
+                palindrome = self.PALINDROME_REPRESENTATIF
 
-        # ALORS la chaîne est renvoyée suivie de "Bien dit !"
-        attendu = palindrome + os.linesep + LangueFrançaise.BIEN_DIT
-        self.assertIn(attendu, résultat)
+                # ET que l'utilisateur parle un langue
+                vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
 
-    def test_well_said(self):
-        # ETANT DONNE un palindrome
-        palindrome = self.PALINDROME_REPRESENTATIF
+                # QUAND on vérifie si c'est un palindrome
+                résultat = vérificateur.vérifier(palindrome)
 
-        # ET que l'utilisateur parle anglais
-        langue = LangueAnglaise()
-        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
-
-        # QUAND on vérifie si c'est un palindrome
-        résultat = vérificateur.vérifier(palindrome)
-
-        # ALORS la chaîne est renvoyée suivie de "Well said !"
-        attendu = palindrome + os.linesep + LangueAnglaise.WELL_SAID
-        self.assertIn(attendu, résultat)
+                # ALORS la chaîne est renvoyée suivie de "Bien dit !"
+                attendu = palindrome + os.linesep + félicitations
+                self.assertIn(attendu, résultat)
 
     def test_au_revoir(self):
         # ETANT DONNE une chaîne

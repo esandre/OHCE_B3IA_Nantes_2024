@@ -4,3 +4,6 @@ class LangueAnglaise:
     @classmethod
     def féliciter(cls):
         return cls.WELL_SAID
+
+    def __str__(self):
+        return "Langue Anglaise"
