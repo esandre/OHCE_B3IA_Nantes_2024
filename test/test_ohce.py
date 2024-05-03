@@ -1,5 +1,7 @@
 import unittest
 
+from verificateur_palindrome import VérificateurPalindrome
+
 
 class PalindromeTest(unittest.TestCase):
     def test_miroir(self):
