@@ -36,7 +36,7 @@ class PalindromeTest(unittest.TestCase):
     def test_féliciter(self):
         cas = [
             [LangueAnglaise(), LangueAnglaise.WELL_SAID],
-            [LangueFrançaise(), LangueFrançaise.BIEN_DIT]
+            [LangueFrançaise(), LangueFrançaise.BIEN_DIT],
         ]
 
         for test in cas:
@@ -56,6 +56,8 @@ class PalindromeTest(unittest.TestCase):
                 # ALORS la chaîne est renvoyée suivie de "Bien dit !"
                 attendu = palindrome + os.linesep + félicitations
                 self.assertIn(attendu, résultat)
+
+    # TODO : Vérifier l'absence de félicitations pour les non-palindromes
 
     def test_au_revoir(self):
         # ETANT DONNE une chaîne
@@ -79,12 +81,28 @@ class PalindromeTest(unittest.TestCase):
         for chaîne in cas:
             with self.subTest(chaîne):
                 # QUAND on vérifie si c'est un palindrome
-                vérificateur = VérificateurPalindromeBuilder.par_defaut()
+                langue = LangueFrançaise()
+                vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
                 résultat = vérificateur.vérifier(chaîne)
 
                 # ALORS la chaîne renvoyée est précédée de "Bonjour"
                 lignes = résultat.split(os.linesep)
-                attendu = VérificateurPalindrome.BONJOUR
+                attendu = LangueFrançaise.BONJOUR
+                self.assertEqual(attendu, lignes[0])
+
+    def test_hello(self):
+        # ETANT DONNE une chaîne
+        cas = [self.PALINDROME_REPRESENTATIF, self.NON_PALINDROME_REPRESENTATIF]
+
+        for chaîne in cas:
+            with self.subTest(chaîne):
+                # QUAND on vérifie si c'est un palindrome
+                vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(LangueAnglaise()).build()
+                résultat = vérificateur.vérifier(chaîne)
+
+                # ALORS la chaîne renvoyée est précédée de "Bonjour"
+                lignes = résultat.split(os.linesep)
+                attendu = LangueAnglaise.HELLO
                 self.assertEqual(attendu, lignes[0])
 
 
