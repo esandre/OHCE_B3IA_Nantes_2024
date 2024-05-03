@@ -33,7 +33,7 @@ class PalindromeTest(unittest.TestCase):
         résultat = VérificateurPalindrome.vérifier(palindrome)
 
         # ALORS la chaîne est renvoyée suivie de "Bien dit !"
-        attendu = palindrome + os.linesep + "Bien dit !"
+        attendu = palindrome + os.linesep + VérificateurPalindrome.BIEN_DIT
         self.assertEqual(attendu, résultat)
 
 
