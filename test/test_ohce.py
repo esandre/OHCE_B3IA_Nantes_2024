@@ -39,7 +39,7 @@ class PalindromeTest(unittest.TestCase):
 
         # ET que l'utilisateur parle français
         langue = LangueFrançaise()
-        vérificateur = VérificateurPalindrome(langue)
+        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
 
         # QUAND on vérifie si c'est un palindrome
         résultat = vérificateur.vérifier(palindrome)
@@ -54,7 +54,7 @@ class PalindromeTest(unittest.TestCase):
 
         # ET que l'utilisateur parle anglais
         langue = LangueAnglaise()
-        vérificateur = VérificateurPalindrome(langue)
+        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
 
         # QUAND on vérifie si c'est un palindrome
         résultat = vérificateur.vérifier(palindrome)

@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43972eaa-192b-4693-a5c7-ca3c1f654ee2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/langue_anglaise.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/langue_francaise.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/utilities/une_langue_dont_on_se_fiche.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/utilities/verificateur_palindrome_builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/verificateur_palindrome.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/verificateur_palindrome.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test_ohce.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_ohce.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/utilities/verificateur_palindrome_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/utilities/verificateur_palindrome_builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

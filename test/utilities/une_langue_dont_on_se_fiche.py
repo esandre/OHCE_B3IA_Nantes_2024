@@ -1,2 +1,4 @@
 class UneLangueDontOnSeFiche:
-    pass
+    @staticmethod
+    def féliciter():
+        return ''

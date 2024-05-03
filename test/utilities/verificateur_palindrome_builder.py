@@ -3,9 +3,15 @@ from verificateur_palindrome import VérificateurPalindrome
 
 
 class VérificateurPalindromeBuilder:
-    def build(self) -> VérificateurPalindrome:
-        return VérificateurPalindrome(UneLangueDontOnSeFiche())
+    __langue = UneLangueDontOnSeFiche()
 
     @classmethod
     def par_defaut(cls):
         return VérificateurPalindromeBuilder().build()
+
+    def build(self) -> VérificateurPalindrome:
+        return VérificateurPalindrome(self.__langue)
+
+    def ayant_pour_langue(self, langue):
+        self.__langue = langue
+        return self
