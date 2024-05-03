@@ -1,11 +1,18 @@
+import random
+import string
 import unittest
 
 from verificateur_palindrome import VérificateurPalindrome
 
 
 class PalindromeTest(unittest.TestCase):
+    @classmethod
+    def randomword(cls, length):
+        letters = string.ascii_lowercase
+        return ''.join(random.choice(letters) for i in range(length))
+
     def test_miroir(self):
-        cas = ["epsi", "test"]
+        cas = ["epsi", "test", "substance", self.randomword(10), self.randomword(100)]
 
         # ETANT DONNE un non-palindrome
         for chaîne in cas:

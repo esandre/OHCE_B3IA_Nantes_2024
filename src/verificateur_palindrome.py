@@ -1,4 +1,4 @@
 class VérificateurPalindrome:
     @classmethod
-    def vérifier(cls, chaîne): #TODO : faire fonctionner avec des mots différents
-        return "tset" if chaîne == "test" else "ispe"
+    def vérifier(cls, chaîne):
+        return chaîne[::-1]
