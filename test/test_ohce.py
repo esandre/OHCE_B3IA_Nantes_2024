@@ -66,12 +66,27 @@ class PalindromeTest(unittest.TestCase):
         for chaîne in cas:
             with self.subTest(chaîne):
                 # QUAND on vérifie si c'est un palindrome
-                vérificateur = VérificateurPalindromeBuilder.par_defaut()
+                vérificateur = vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(LangueFrançaise()).build()
                 résultat = vérificateur.vérifier(chaîne)
 
                 # ALORS la chaîne contient "Au revoir" sur la dernière ligne
                 lignes = résultat.split(os.linesep)
-                attendu = VérificateurPalindrome.AU_REVOIR
+                attendu = LangueFrançaise.AU_REVOIR
+                self.assertEqual(attendu, lignes[-1])
+
+    def test_goodbye(self):
+        # ETANT DONNE une chaîne
+        cas = [self.PALINDROME_REPRESENTATIF, self.NON_PALINDROME_REPRESENTATIF]
+
+        for chaîne in cas:
+            with self.subTest(chaîne):
+                # QUAND on vérifie si c'est un palindrome
+                vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(LangueAnglaise()).build()
+                résultat = vérificateur.vérifier(chaîne)
+
+                # ALORS la chaîne contient "Au revoir" sur la dernière ligne
+                lignes = résultat.split(os.linesep)
+                attendu = LangueAnglaise.GOODBYE
                 self.assertEqual(attendu, lignes[-1])
 
     def test_bonjour(self):

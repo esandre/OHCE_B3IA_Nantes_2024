@@ -6,3 +6,7 @@ class UneLangueDontOnSeFiche:
     @staticmethod
     def saluer():
         return ''
+
+    @staticmethod
+    def acquitter():
+        return ''
