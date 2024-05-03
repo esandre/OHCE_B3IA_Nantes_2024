@@ -10,4 +10,6 @@ class VérificateurPalindrome:
         miroir = chaîne[::-1]
         est_palindrome = miroir == chaîne
 
-        return chaîne + os.linesep + cls.BIEN_DIT if est_palindrome else "Bonjour" + os.linesep + miroir
+        return cls.BONJOUR + os.linesep + chaîne + os.linesep + cls.BIEN_DIT \
+            if est_palindrome \
+            else cls.BONJOUR + os.linesep + miroir
