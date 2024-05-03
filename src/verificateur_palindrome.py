@@ -4,6 +4,7 @@ import os
 class VérificateurPalindrome:
     BIEN_DIT = "Bien dit !"
     BONJOUR = "Bonjour"
+    AU_REVOIR = "Au revoir"
 
     @classmethod
     def vérifier(cls, chaîne):
@@ -14,4 +15,4 @@ class VérificateurPalindrome:
             if est_palindrome \
             else miroir
 
-        return cls.BONJOUR + os.linesep + retour
+        return cls.BONJOUR + os.linesep + retour + os.linesep + cls.AU_REVOIR

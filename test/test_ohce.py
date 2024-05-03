@@ -36,6 +36,30 @@ class PalindromeTest(unittest.TestCase):
         attendu = palindrome + os.linesep + VérificateurPalindrome.BIEN_DIT
         self.assertIn(attendu, résultat)
 
+    def test_au_revoir(self):
+        # ETANT DONNE un palindrome
+        palindrome = "radar"
+
+        # QUAND on vérifie si c'est un palindrome
+        résultat = VérificateurPalindrome.vérifier(palindrome)
+
+        # ALORS la chaîne contient "Au revoir" sur la dernière ligne
+        lignes = résultat.split(os.linesep)
+        attendu = VérificateurPalindrome.AU_REVOIR
+        self.assertEqual(attendu, lignes[-1])
+
+    def test_au_revoir_2(self):
+        # ETANT DONNE un non-palindrome
+        non_palindrome = "test"
+
+        # QUAND on vérifie si c'est un palindrome
+        résultat = VérificateurPalindrome.vérifier(non_palindrome)
+
+        # ALORS la chaîne contient "Au revoir" sur la dernière ligne
+        lignes = résultat.split(os.linesep)
+        attendu = VérificateurPalindrome.AU_REVOIR
+        self.assertEqual(attendu, lignes[-1])
+
     def test_bonjour(self):
         # ETANT DONNE une chaîne
         chaîne = "test"
