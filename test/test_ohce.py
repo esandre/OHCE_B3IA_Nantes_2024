@@ -1,3 +1,4 @@
+import os
 import random
 import string
 import unittest
@@ -23,6 +24,17 @@ class PalindromeTest(unittest.TestCase):
                 # ALORS la chaîne est renvoyée en miroir
                 attendu = chaîne[::-1]
                 self.assertEqual(attendu, résultat)
+
+    def test_bien_dit(self):
+        # ETANT DONNE un palindrome
+        palindrome = "radar"
+
+        # QUAND on vérifie si c'est un palindrome
+        résultat = VérificateurPalindrome.vérifier(palindrome)
+
+        # ALORS la chaîne est renvoyée suivie de "Bien dit !"
+        attendu = palindrome + os.linesep + "Bien dit !"
+        self.assertEqual(attendu, résultat)
 
 
 if __name__ == '__main__':
