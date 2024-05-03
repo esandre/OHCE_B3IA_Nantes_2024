@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="43972eaa-192b-4693-a5c7-ca3c1f654ee2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/langue_anglaise.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/langue_anglaise.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/langue_francaise.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/langue_francaise.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/verificateur_palindrome.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/verificateur_palindrome.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test_ohce.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_ohce.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/utilities/une_langue_dont_on_se_fiche.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/utilities/une_langue_dont_on_se_fiche.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +88,7 @@
       <updated>1714724108472</updated>
       <workItem from="1714724112531" duration="4000" />
       <workItem from="1714749262448" duration="597000" />
-      <workItem from="1714750115697" duration="1672000" />
+      <workItem from="1714750115697" duration="1938000" />
     </task>
     <servers />
   </component>
@@ -100,6 +96,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/OHCE_IA$.coverage" NAME=" Coverage Results" MODIFIED="1714751774433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/OHCE_IA$.coverage" NAME=" Coverage Results" MODIFIED="1714751969517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
   </component>
 </project>

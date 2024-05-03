@@ -6,7 +6,6 @@ import unittest
 from langue_anglaise import LangueAnglaise
 from langue_francaise import LangueFrançaise
 from utilities.verificateur_palindrome_builder import VérificateurPalindromeBuilder
-from verificateur_palindrome import VérificateurPalindrome
 
 
 class PalindromeTest(unittest.TestCase):
@@ -59,66 +58,55 @@ class PalindromeTest(unittest.TestCase):
 
     # TODO : Vérifier l'absence de félicitations pour les non-palindromes
 
-    def test_au_revoir(self):
-        # ETANT DONNE une chaîne
-        cas = [self.PALINDROME_REPRESENTATIF, self.NON_PALINDROME_REPRESENTATIF]
+    def test_acquittance(self):
+        cas = [
+            [self.PALINDROME_REPRESENTATIF, LangueAnglaise(), LangueAnglaise.GOODBYE],
+            [self.NON_PALINDROME_REPRESENTATIF, LangueAnglaise(), LangueAnglaise.GOODBYE],
+            [self.PALINDROME_REPRESENTATIF, LangueFrançaise(), LangueFrançaise.AU_REVOIR],
+            [self.NON_PALINDROME_REPRESENTATIF, LangueFrançaise(), LangueFrançaise.AU_REVOIR],
+        ]
 
-        for chaîne in cas:
-            with self.subTest(chaîne):
+        for test in cas:
+            chaîne = test[0]
+            langue = test[1]
+            acquittance = test[2]
+
+            with self.subTest(f"{chaîne} - {langue}"):
+                # ETANT DONNE une <chaîne>
+                # ET que l'utilisateur parle <langue>
+
                 # QUAND on vérifie si c'est un palindrome
-                vérificateur = vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(LangueFrançaise()).build()
-                résultat = vérificateur.vérifier(chaîne)
-
-                # ALORS la chaîne contient "Au revoir" sur la dernière ligne
-                lignes = résultat.split(os.linesep)
-                attendu = LangueFrançaise.AU_REVOIR
-                self.assertEqual(attendu, lignes[-1])
-
-    def test_goodbye(self):
-        # ETANT DONNE une chaîne
-        cas = [self.PALINDROME_REPRESENTATIF, self.NON_PALINDROME_REPRESENTATIF]
-
-        for chaîne in cas:
-            with self.subTest(chaîne):
-                # QUAND on vérifie si c'est un palindrome
-                vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(LangueAnglaise()).build()
-                résultat = vérificateur.vérifier(chaîne)
-
-                # ALORS la chaîne contient "Au revoir" sur la dernière ligne
-                lignes = résultat.split(os.linesep)
-                attendu = LangueAnglaise.GOODBYE
-                self.assertEqual(attendu, lignes[-1])
-
-    def test_bonjour(self):
-        # ETANT DONNE une chaîne
-        cas = [self.PALINDROME_REPRESENTATIF, self.NON_PALINDROME_REPRESENTATIF]
-
-        for chaîne in cas:
-            with self.subTest(chaîne):
-                # QUAND on vérifie si c'est un palindrome
-                langue = LangueFrançaise()
                 vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
                 résultat = vérificateur.vérifier(chaîne)
 
-                # ALORS la chaîne renvoyée est précédée de "Bonjour"
+                # ALORS la chaîne contient les salutations de cette langue sur la dernière ligne
                 lignes = résultat.split(os.linesep)
-                attendu = LangueFrançaise.BONJOUR
-                self.assertEqual(attendu, lignes[0])
+                self.assertEqual(acquittance, lignes[-1])
 
-    def test_hello(self):
-        # ETANT DONNE une chaîne
-        cas = [self.PALINDROME_REPRESENTATIF, self.NON_PALINDROME_REPRESENTATIF]
+    def test_bonjour(self):
+        cas = [
+            [self.PALINDROME_REPRESENTATIF, LangueAnglaise(), LangueAnglaise.HELLO],
+            [self.NON_PALINDROME_REPRESENTATIF, LangueAnglaise(), LangueAnglaise.HELLO],
+            [self.PALINDROME_REPRESENTATIF, LangueFrançaise(), LangueFrançaise.BONJOUR],
+            [self.NON_PALINDROME_REPRESENTATIF, LangueFrançaise(), LangueFrançaise.BONJOUR],
+        ]
 
-        for chaîne in cas:
-            with self.subTest(chaîne):
+        for test in cas:
+            chaîne = test[0]
+            langue = test[1]
+            salutations = test[2]
+
+            with self.subTest(f"{chaîne} - {langue}"):
+                # ETANT DONNE une <chaîne>
+                # ET que l'utilisateur parle <langue>
+
                 # QUAND on vérifie si c'est un palindrome
-                vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(LangueAnglaise()).build()
+                vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
                 résultat = vérificateur.vérifier(chaîne)
 
-                # ALORS la chaîne renvoyée est précédée de "Bonjour"
+                # ALORS la chaîne renvoyée est précédée des salutations de cette langue
                 lignes = résultat.split(os.linesep)
-                attendu = LangueAnglaise.HELLO
-                self.assertEqual(attendu, lignes[0])
+                self.assertEqual(salutations, lignes[0])
 
 
 if __name__ == '__main__':
