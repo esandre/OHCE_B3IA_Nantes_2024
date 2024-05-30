@@ -5,6 +5,7 @@ import unittest
 
 from langue_anglaise import LangueAnglaise
 from langue_francaise import LangueFrançaise
+from moment_de_la_journee import MomentDeLaJournée
 from utilities.verificateur_palindrome_builder import VérificateurPalindromeBuilder
 
 
@@ -102,6 +103,37 @@ class PalindromeTest(unittest.TestCase):
 
                 # QUAND on vérifie si c'est un palindrome
                 vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
+                résultat = vérificateur.vérifier(chaîne)
+
+                # ALORS la chaîne renvoyée est précédée des salutations de cette langue
+                lignes = résultat.split(os.linesep)
+                self.assertEqual(salutations, lignes[0])
+
+    def test_bonjour_nuit(self):
+        cas = [
+            [self.PALINDROME_REPRESENTATIF, LangueAnglaise(), LangueAnglaise.GOOD_NIGHT],
+            [self.NON_PALINDROME_REPRESENTATIF, LangueAnglaise(), LangueAnglaise.GOOD_NIGHT],
+            [self.PALINDROME_REPRESENTATIF, LangueFrançaise(), LangueFrançaise.BONSOIR],
+            [self.NON_PALINDROME_REPRESENTATIF, LangueFrançaise(), LangueFrançaise.BONSOIR],
+        ]
+
+        for test in cas:
+            chaîne = test[0]
+            langue = test[1]
+            salutations = test[2]
+
+            with self.subTest(f"{chaîne} - {langue}"):
+                # ETANT DONNE une <chaîne>
+                # ET que l'utilisateur parle <langue>
+                # ET que le moment de la journée est la nuit
+                moment = MomentDeLaJournée.Nuit
+
+                # QUAND on vérifie si c'est un palindrome
+                vérificateur = VérificateurPalindromeBuilder()\
+                    .ayant_pour_langue(langue)\
+                    .ayant_pour_moment_de_la_journée(moment)\
+                    .build()
+
                 résultat = vérificateur.vérifier(chaîne)
 
                 # ALORS la chaîne renvoyée est précédée des salutations de cette langue

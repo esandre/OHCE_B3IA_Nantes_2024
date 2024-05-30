@@ -4,7 +4,7 @@ class UneLangueDontOnSeFiche:
         return ''
 
     @staticmethod
-    def saluer():
+    def saluer(moment):
         return ''
 
     @staticmethod

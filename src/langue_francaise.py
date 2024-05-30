@@ -1,4 +1,8 @@
+from moment_de_la_journee import MomentDeLaJournée
+
+
 class LangueFrançaise:
+    BONSOIR = "Bonsoir"
     BIEN_DIT = "Bien dit !"
     BONJOUR = "Bonjour"
     AU_REVOIR = "Au revoir"
@@ -8,8 +12,8 @@ class LangueFrançaise:
         return cls.BIEN_DIT
 
     @classmethod
-    def saluer(cls):
-        return cls.BONJOUR
+    def saluer(cls, moment):
+        return cls.BONSOIR if moment == MomentDeLaJournée.Nuit else cls.BONJOUR
 
     @classmethod
     def acquitter(cls):
