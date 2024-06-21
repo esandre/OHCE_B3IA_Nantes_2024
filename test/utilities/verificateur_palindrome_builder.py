@@ -1,9 +1,9 @@
-from utilities.une_langue_dont_on_se_fiche import UneLangueDontOnSeFiche
-from verificateur_palindrome import VérificateurPalindrome
+from utilities.langue_stub import LangueStub
+from domain.verificateur_palindrome import VérificateurPalindrome
 
 
 class VérificateurPalindromeBuilder:
-    __langue = UneLangueDontOnSeFiche()
+    __langue = LangueStub()
     __moment = None
 
     @classmethod

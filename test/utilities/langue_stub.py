@@ -1,4 +1,4 @@
-class UneLangueDontOnSeFiche:
+class LangueStub:
     @staticmethod
     def féliciter():
         return ''

@@ -21,4 +21,4 @@ class VérificateurPalindrome:
         return (salutations + os.linesep
                 + retour + os.linesep
                 + félicitations + os.linesep
-                + acquittance)
+                + acquittance + os.linesep)

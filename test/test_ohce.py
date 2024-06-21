@@ -3,9 +3,10 @@ import random
 import string
 import unittest
 
-from langue_anglaise import LangueAnglaise
-from langue_francaise import LangueFrançaise
-from moment_de_la_journee import MomentDeLaJournée
+from domain.langue_anglaise import LangueAnglaise
+from domain.langue_francaise import LangueFrançaise
+from domain.moment_de_la_journee import MomentDeLaJournée
+from utilities.langue_stub import LangueStub
 from utilities.verificateur_palindrome_builder import VérificateurPalindromeBuilder
 
 
@@ -32,6 +33,8 @@ class PalindromeTest(unittest.TestCase):
                 # ALORS la chaîne est renvoyée en miroir
                 attendu = chaîne[::-1]
                 self.assertIn(attendu, résultat)
+
+    # Pas de Bien dit! quand pas de palindrome
 
     def test_féliciter(self):
         cas = [
@@ -81,20 +84,24 @@ class PalindromeTest(unittest.TestCase):
                 résultat = vérificateur.vérifier(chaîne)
 
                 # ALORS la chaîne contient les salutations de cette langue sur la dernière ligne
-                lignes = résultat.split(os.linesep)
-                self.assertEqual(acquittance, lignes[-1])
+                self.vérifier_dernière_ligne_égale(acquittance, résultat)
+
+    def cas_test_bonjour(self):
+        cas_bruts = [
+            [LangueAnglaise(), LangueAnglaise.HELLO, MomentDeLaJournée.Inconnu],
+            [LangueFrançaise(), LangueFrançaise.BONJOUR, MomentDeLaJournée.Inconnu],
+            [LangueAnglaise(), LangueAnglaise.GOOD_NIGHT, MomentDeLaJournée.Nuit],
+            [LangueFrançaise(), LangueFrançaise.BONSOIR, MomentDeLaJournée.Nuit],
+        ]
+
+        chaines_testées = [self.PALINDROME_REPRESENTATIF, self.NON_PALINDROME_REPRESENTATIF]
+
+        for cas_brut in cas_bruts:
+            for chaîne in chaines_testées:
+                yield [chaîne, *cas_brut]
 
     def test_bonjour(self):
-        cas = [
-            [self.PALINDROME_REPRESENTATIF, LangueAnglaise(), LangueAnglaise.HELLO, MomentDeLaJournée.Inconnu],
-            [self.NON_PALINDROME_REPRESENTATIF, LangueAnglaise(), LangueAnglaise.HELLO, MomentDeLaJournée.Inconnu],
-            [self.PALINDROME_REPRESENTATIF, LangueFrançaise(), LangueFrançaise.BONJOUR, MomentDeLaJournée.Inconnu],
-            [self.NON_PALINDROME_REPRESENTATIF, LangueFrançaise(), LangueFrançaise.BONJOUR, MomentDeLaJournée.Inconnu],
-            [self.PALINDROME_REPRESENTATIF, LangueAnglaise(), LangueAnglaise.GOOD_NIGHT, MomentDeLaJournée.Nuit],
-            [self.NON_PALINDROME_REPRESENTATIF, LangueAnglaise(), LangueAnglaise.GOOD_NIGHT, MomentDeLaJournée.Nuit],
-            [self.PALINDROME_REPRESENTATIF, LangueFrançaise(), LangueFrançaise.BONSOIR, MomentDeLaJournée.Nuit],
-            [self.NON_PALINDROME_REPRESENTATIF, LangueFrançaise(), LangueFrançaise.BONSOIR, MomentDeLaJournée.Nuit],
-        ]
+        cas = self.cas_test_bonjour()
 
         for test in cas:
             chaîne = test[0]
@@ -114,9 +121,33 @@ class PalindromeTest(unittest.TestCase):
 
                 résultat = vérificateur.vérifier(chaîne)
 
-                # ALORS la chaîne renvoyée est précédée des salutations de cette langue
-                lignes = résultat.split(os.linesep)
-                self.assertEqual(salutations, lignes[0])
+                self.vérifier_première_ligne_égale(salutations, résultat)
+
+    def test_fin_ligne(self):
+        cas = [LangueAnglaise(), LangueFrançaise(), LangueStub()]
+
+        for langue in cas:
+            with self.subTest(langue):
+                chaîne = "test"
+
+                verificateur_palindrome = VérificateurPalindromeBuilder()\
+                    .ayant_pour_langue(langue)\
+                    .build()
+
+                résultat = verificateur_palindrome.vérifier(chaîne)
+
+                self.assertTrue(résultat.endswith(os.linesep))
+
+    def vérifier_ligne_égale(self, expected, result, line):
+        lines = result.split(os.linesep)
+        self.assertEqual(expected, lines[line])
+
+    def vérifier_première_ligne_égale(self, expected, result):
+        self.vérifier_ligne_égale(expected, result, 0)
+
+    def vérifier_dernière_ligne_égale(self, expected, result):
+        self.vérifier_ligne_égale(expected, result, -1)
+
 
 if __name__ == '__main__':
     unittest.main()

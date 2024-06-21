@@ -1,4 +1,4 @@
-from moment_de_la_journee import MomentDeLaJournée
+from domain.moment_de_la_journee import MomentDeLaJournée
 
 
 class LangueAnglaise:

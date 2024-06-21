@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43972eaa-192b-4693-a5c7-ca3c1f654ee2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/langue_systeme.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/moment_de_la_journee.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/moment_de_la_journee.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/langue_anglaise.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/langue_anglaise.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/langue_francaise.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/langue_francaise.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/moment_de_la_journee.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/moment_de_la_journee.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/verificateur_palindrome.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/verificateur_palindrome.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test_ohce.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_ohce.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/utilities/une_langue_dont_on_se_fiche.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/utilities/langue_stub.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/utilities/verificateur_palindrome_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/utilities/verificateur_palindrome_builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,20 +42,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests for test_ohce.PalindromeTest.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests for test_ohce.PalindromeTest.executor": "Run",
+    "Python tests.Python tests in test.executor": "Run",
+    "Python.main.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ateli\Sources\Formations\EPSI Nantes\2023-2024\B3IA\OHCE_IA\src\domain" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="OHCE_IA" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests in test" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="OHCE_IA" />
       <option name="ENV_FILES" value="" />
@@ -67,6 +103,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python tests.Python tests in test" />
       </list>
     </recent_temporary>
@@ -92,6 +129,9 @@
       <workItem from="1714750115697" duration="2048000" />
       <workItem from="1715600901375" duration="82000" />
       <workItem from="1717067326297" duration="512000" />
+      <workItem from="1717410054586" duration="19000" />
+      <workItem from="1718953996811" duration="578000" />
+      <workItem from="1718954952329" duration="2073000" />
     </task>
     <servers />
   </component>
@@ -99,6 +139,7 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/OHCE_IA$.coverage" NAME=" Coverage Results" MODIFIED="1717069006675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/OHCE_IA$.coverage" NAME=" Coverage Results" MODIFIED="1717084476912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/OHCE_IA$main.coverage" NAME="main Coverage Results" MODIFIED="1718958281732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
