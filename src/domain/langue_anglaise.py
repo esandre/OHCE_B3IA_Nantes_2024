@@ -2,6 +2,8 @@ from domain.moment_de_la_journee import MomentDeLaJournée
 
 
 class LangueAnglaise:
+    GOOD_AFTERNOON = "Good afternoon"
+    GOOD_MORNING = "Good morning"
     GOOD_EVENING = "Good evening"
     GOOD_NIGHT = "Good night"
     GOODBYE = "Goodbye"

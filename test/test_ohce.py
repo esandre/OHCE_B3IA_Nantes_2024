@@ -6,6 +6,7 @@ import unittest
 from domain.langue_anglaise import LangueAnglaise
 from domain.langue_francaise import LangueFrançaise
 from domain.moment_de_la_journee import MomentDeLaJournée
+from utilities.langue_fake import LangueFake
 from utilities.langue_stub import LangueStub
 from utilities.verificateur_palindrome_builder import VérificateurPalindromeBuilder
 
@@ -87,33 +88,30 @@ class PalindromeTest(unittest.TestCase):
                 self.vérifier_dernière_ligne_égale(acquittance, résultat)
 
     def cas_test_bonjour(self):
-        cas_bruts = [
-            [LangueAnglaise(), LangueAnglaise.HELLO, MomentDeLaJournée.Inconnu],
-            [LangueFrançaise(), LangueFrançaise.BONJOUR, MomentDeLaJournée.Inconnu],
-            [LangueAnglaise(), LangueAnglaise.GOOD_NIGHT, MomentDeLaJournée.Nuit],
-            [LangueFrançaise(), LangueFrançaise.BONSOIR, MomentDeLaJournée.Nuit],
-            [LangueAnglaise(), LangueAnglaise.GOOD_EVENING, MomentDeLaJournée.Soir],
-            [LangueFrançaise(), LangueFrançaise.BONSOIR, MomentDeLaJournée.Soir],
+        moments = [
+            [MomentDeLaJournée.Inconnu],
+            [MomentDeLaJournée.Nuit],
+            [MomentDeLaJournée.Soir],
+            [MomentDeLaJournée.Matin],
+            [MomentDeLaJournée.AprèsMidi],
         ]
 
         chaines_testées = [self.PALINDROME_REPRESENTATIF, self.NON_PALINDROME_REPRESENTATIF]
 
-        for cas_brut in cas_bruts:
+        for moment in moments:
             for chaîne in chaines_testées:
-                yield [chaîne, *cas_brut]
+                yield [chaîne, moment]
 
     def test_bonjour(self):
         cas = self.cas_test_bonjour()
 
         for test in cas:
             chaîne = test[0]
-            langue = test[1]
-            salutations = test[2]
-            moment = test[3]
+            moment = test[1]
 
-            with self.subTest(f"{chaîne} - {langue} - {moment}"):
+            with self.subTest(f"{chaîne} - {moment}"):
                 # ETANT DONNE une <chaîne>
-                # ET que l'utilisateur parle <langue>
+                langue = LangueFake()
 
                 # QUAND on vérifie si c'est un palindrome
                 vérificateur = VérificateurPalindromeBuilder()\
@@ -122,8 +120,9 @@ class PalindromeTest(unittest.TestCase):
                     .build()
 
                 résultat = vérificateur.vérifier(chaîne)
+                attendu = langue.saluer(moment)
 
-                self.vérifier_première_ligne_égale(salutations, résultat)
+                self.vérifier_première_ligne_égale(attendu, résultat)
 
     def test_fin_ligne(self):
         cas = [LangueAnglaise(), LangueFrançaise(), LangueStub()]
