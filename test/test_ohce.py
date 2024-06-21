@@ -92,6 +92,8 @@ class PalindromeTest(unittest.TestCase):
             [LangueFrançaise(), LangueFrançaise.BONJOUR, MomentDeLaJournée.Inconnu],
             [LangueAnglaise(), LangueAnglaise.GOOD_NIGHT, MomentDeLaJournée.Nuit],
             [LangueFrançaise(), LangueFrançaise.BONSOIR, MomentDeLaJournée.Nuit],
+            [LangueAnglaise(), LangueAnglaise.GOOD_EVENING, MomentDeLaJournée.Soir],
+            [LangueFrançaise(), LangueFrançaise.BONSOIR, MomentDeLaJournée.Soir],
         ]
 
         chaines_testées = [self.PALINDROME_REPRESENTATIF, self.NON_PALINDROME_REPRESENTATIF]
